@@ -16,7 +16,7 @@ def cargarDatos():
             f.close()
             for linea in lineas:
                 linea = linea.split(",")
-                num = int(linea[0])
+                num = linea[0]
                 capacidad = int(linea[1])
                 precio = float(linea[2])
                 estat = linea[3].replace("\n", "")
@@ -25,13 +25,13 @@ def cargarDatos():
                     "Precio": precio,
                     "Estado": estat
                 }
-        elif os.path.exists(ruta_archivo2):
+        if os.path.exists(ruta_archivo2):
             f = open(ruta_archivo2, "r")
             lineas = f.readlines()
             f.close()
             for linea in lineas:
                 linea = linea.split(",")
-                num = int(linea[0])
+                num = linea[0]
                 nom = linea[1]
                 ap = linea[2]
                 dni = linea[3]
@@ -71,7 +71,8 @@ def afegirHabitacio(num, capacidad, precio):
 
 
 def afegirReserva(num, nom, ap, dni, tel):
-    num = int(num)
+    #num = int(num)
+
     if num in habitaciones:
         if habitaciones[num]["Estado"] == "DISPONIBLE":
             if len(dni) == 9:
@@ -107,12 +108,14 @@ def afegirReserva(num, nom, ap, dni, tel):
 
 
 def finalitzarHabitacio(num, dias):
-    num = int(num)
+    #num = int(num)
+    print(habitaciones)
+    print(reservas)
     if num in habitaciones:
         if num in reservas:
             precio = habitaciones[num]["Precio"]
-            if dias > 0:
-                total = precio * dias
+            if int(dias) > 0:
+                total = precio * int(dias)
                 habitaciones[num]["Estado"] = "SUCIA"
                 f = open(ruta_archivo1, "r")
                 lineas = f.readlines()
