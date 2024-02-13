@@ -6,13 +6,13 @@ import os
 
 habitaciones = {}
 reservas = {}
-nombre_carpeta = "./datos"
-ruta_archivo1 = nombre_carpeta + "/habitaciones.txt"
-ruta_archivo2 = nombre_carpeta + "/reservas.txt"
+carpeta = "./datos"
+ruta_archivo1 = carpeta + "/habitaciones.txt"
+ruta_archivo2 = carpeta + "/reservas.txt"
 
 
 def cargarDatos():
-    if os.path.exists(nombre_carpeta):
+    if os.path.exists(carpeta):
         if os.path.exists(ruta_archivo1):
             f = open(ruta_archivo1, "r")
             lineas = f.readlines()
@@ -46,7 +46,7 @@ def cargarDatos():
                     "Telefono": tel
                 }
     else:
-        os.mkdir(nombre_carpeta)
+        os.mkdir(carpeta)
 
 
 def leer(ruta):
