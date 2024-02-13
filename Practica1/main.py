@@ -4,26 +4,36 @@ from ficheros import *
 
 comando = sys.argv
 if len(comando) > 1:
-    if len(comando) == 6:
-        if comando[1].lower() == "afegir" and comando[2].lower() == "habitacio":
+    if comando[1].lower() == "afegir" and comando[2].lower() == "habitacio":
+        if comprobarLong(comando, 6):
             num = comando[3]
             capacidad = comando[4]
             precio = comando[5]
             afegirHabitacio(num, capacidad, precio)
-    if len(comando) == 8:
-        if comando[1].lower() == "afegir" and comando[2].lower() == "reserva":
+    elif comando[1].lower() == "afegir" and comando[2].lower() == "reserva":
+        if comprobarLong(comando, 8):
             num = comando[3]
             nom = comando[4]
             ap = comando[5]
             dni = comando[6]
             tel = comando[7]
             afegirReserva(num, nom, ap, dni, tel)
-    if len(comando) == 5:
-        if comando[1].lower() == "finalitzar" and comando[2].lower() == "habitacio":
+    elif comando[1].lower() == "finalitzar" and comando[2].lower() == "habitacio":
+        if comprobarLong(comando, 5):
             num = comando[3]
             dias = comando[4]
             finalitzarHabitacio(num, dias)
-    if len(comando) == 2:
-        if comando[1].lower() == "reserves":
+    elif comando[1].lower() == "reserves":
+        if comprobarLong(comando, 2):
             mostrarReservas()
-
+    elif comando[1].lower() == "netejar":
+        if comprobarLong(comando,3):
+            num = comando[2]
+            netejarHabitacio(num)
+    elif comando[1].lower() == "info":
+        if comprobarLong(comando, 3):
+            dni = comando[2]
+            info(dni)
+    elif comando[1].lower() == "list":
+        if comprobarLong(comando, 2):
+            list()
