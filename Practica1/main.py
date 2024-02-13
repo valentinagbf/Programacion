@@ -1,5 +1,8 @@
+# Este modulo realiza la ejecucion incial del programa
+
+
 import sys
-from ficheros import *
+from hotel import *
 
 
 comando = sys.argv
@@ -37,3 +40,5 @@ if len(comando) > 1:
     elif comando[1].lower() == "list":
         if comprobarLong(comando, 2):
             list()
+    else:
+        print("Comando Incorrecto.")
