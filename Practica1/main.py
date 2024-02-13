@@ -21,10 +21,10 @@ if len(comando) > 1:
             dni = comando[6]
             tel = comando[7]
             afegirReserva(num, nom, ap, dni, tel)
-    elif comando[1].lower() == "finalitzar" and comando[2].lower() == "habitacio":
-        if comprobarLong(comando, 5):
-            num = comando[3]
-            dias = comando[4]
+    elif comando[1].lower() == "finalitzar":
+        if comprobarLong(comando, 4):
+            num = comando[2]
+            dias = comando[3]
             finalitzarHabitacio(num, dias)
     elif comando[1].lower() == "reserves":
         if comprobarLong(comando, 2):
