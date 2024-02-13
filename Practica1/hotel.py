@@ -16,7 +16,7 @@ def comprobarLong(comando, long):
 
 def afegirHabitacio(num, capacidad, precio):
     if num not in habitaciones:
-        if num.isdigit():
+        if num.isdigit() and int(num) > 0:
             if capacidad.isdigit() and int(capacidad) > 0:
                 if precio.replace(".", "", 1).isdigit() and precio.count(".") <= 1 and float(precio) > 0:
                     habitaciones[num] = {
@@ -28,7 +28,7 @@ def afegirHabitacio(num, capacidad, precio):
                     escribir(ruta_archivo1, datos)
                     print("Habitacion Registrada")
                 else:
-                    print("Precio Incorrecta. Debe ser mayor que 0.")
+                    print("Precio Incorrecto. Debe ser mayor que 0.")
             else:
                 print("Capacidad Incorrecta. Debe ser mayor que 0.")
         else:
@@ -42,16 +42,12 @@ def afegirReserva(num, nom, ap, dni, tel):
         if habitaciones[num]["Estado"] == "DISPONIBLE":
             if len(dni) == 9:
                 if len(tel) == 9 and tel.isdigit():
-                    reserva = {
+                    reservas[num] = {
                         "Nombre": nom,
                         "Apellido": ap,
                         "DNI": dni,
                         "Telefono": tel
                     }
-                    if dni in reservas:
-                        reservas[dni].append(reserva)
-                    else:
-                        reservas[dni] = [reserva]
                     habitaciones[num]["Estado"] = "OCUPADA"
                     datos = [f"{num},{nom},{ap},{dni},{tel}"]
                     escribir(ruta_archivo2, datos)
