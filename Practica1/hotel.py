@@ -14,6 +14,17 @@ def comprobarLong(comando, long):
     return False
 
 
+def verificardni(dni):
+    if len(dni) != 9:
+        return False
+    for caracter in dni[:-1]:
+        if not caracter.isdigit():
+            return False
+    if not dni[-1].isalpha():
+        return False
+    return True
+
+
 def afegirHabitacio(num, capacidad, precio):
     if num not in habitaciones:
         if num.isdigit() and int(num) > 0:
@@ -40,8 +51,13 @@ def afegirHabitacio(num, capacidad, precio):
 def afegirReserva(num, nom, ap, dni, tel):
     if num in habitaciones:
         if habitaciones[num]["Estado"] == "DISPONIBLE":
-            if len(dni) == 9:
+            if verificardni(dni):
                 if len(tel) == 9 and tel.isdigit():
+                    for reserva in reservas.values():
+                        if reserva["DNI"] == dni or reserva["Telefono"] == tel:
+                            if reserva["Nombre"] != nom:
+                                print("Ya existe una reserva para una persona con el mismo DNI o teléfono.")
+                                return
                     reservas[num] = {
                         "Nombre": nom,
                         "Apellido": ap,
@@ -57,10 +73,14 @@ def afegirReserva(num, nom, ap, dni, tel):
                     print("El Formato del Telefono es Incorrecto.")
             else:
                 print("El Formato del DNI es Incorrecto.")
+        elif habitaciones[num]["Estado"] == "BRUTA":
+            print("La habiatacion indicada se encuentra en espera del servicio de limpieza. "
+                  "Antes de ser reservarvada debe limpiarse.")
         else:
             print("La habitacion indicada no se encuentra disponible para reservar")
     else:
         print("No existe una habitacion con el numero indicado")
+
 
 
 def finalitzarHabitacio(num, dias):
