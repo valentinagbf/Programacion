@@ -7,7 +7,7 @@ from hotel import *
 
 comando = sys.argv
 if len(comando) > 1:
-    if len(comando) > 2:
+    if len(comando) > 2  or len(comando) == 2:
         if comando[1].lower() == "afegir" and comando[2].lower() == "habitacio":
             if comprobarLong(comando, 6):
                 num = comando[3]
