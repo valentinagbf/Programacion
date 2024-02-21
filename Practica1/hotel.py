@@ -1,6 +1,3 @@
-# Este modulo almacena las funciones relacionadas con la gestion del hotel
-
-
 from ficheros import *
 
 
@@ -80,7 +77,6 @@ def afegirReserva(num, nom, ap, dni, tel):
             print("La habitacion indicada no se encuentra disponible para reservar")
     else:
         print("No existe una habitacion con el numero indicado")
-
 
 
 def finalitzarHabitacio(num, dias):
