@@ -1,6 +1,3 @@
-# Este modulo contiene las funciones relacionadas con los ficheros y el almacenamiento de datos del programa
-
-
 import os
 
 
@@ -66,6 +63,7 @@ def escribir(ruta, datos):
 def reescribirDato(ruta, num, old, new):
     f = open(ruta, "r")
     lineas = f.readlines()
+    f.close()
     f = open(ruta, "w")
     for linea in lineas:
         if linea.startswith(str(num)):
@@ -77,9 +75,11 @@ def reescribirDato(ruta, num, old, new):
 def eliminar(ruta, num):
     f = open(ruta, "r")
     lineas = f.readlines()
+    f.close()
     f = open(ruta, "w")
     for linea in lineas:
         if linea.startswith(str(num)):
             reservas.pop(num)
         else:
             f.write(linea)
+    f.close()
