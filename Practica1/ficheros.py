@@ -3,9 +3,9 @@ import os
 
 habitaciones = {}
 reservas = {}
-carpeta = "./datos"
-ruta_archivo1 = carpeta + "/habitaciones.txt"
-ruta_archivo2 = carpeta + "/reservas.txt"
+carpeta = "./dades"
+ruta_archivo1 = carpeta + "/habitacions.txt"
+ruta_archivo2 = carpeta + "/reserves.txt"
 
 
 def cargarDatos():
