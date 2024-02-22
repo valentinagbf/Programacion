@@ -1,5 +1,5 @@
 import sys
-from gestion import *
+from hotel import *
 
 
 comando = sys.argv
